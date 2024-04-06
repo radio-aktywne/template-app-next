@@ -1,0 +1,9 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 0.10.1
+_src_path: gh:radio-aktywne/template-meta
+accountname: radio-aktywne
+description: Next.js app template ⚫
+reponame: template-app-next
+repourl: https://github.com/radio-aktywne/template-app-next
+templatename: next
+type: app
