@@ -33,6 +33,11 @@ port:
   help: The port on which the app will listen
   default: 3000
 
+keyprefix:
+  type: str
+  help: The prefix for various keys used in the app (e.g. for storage)
+  default: "{{ appname | lower | replace('_', '-') }}"
+
 docs:
   type: bool
   help: Whether to include a documentation site for the app

@@ -88,6 +88,8 @@ SHELL ["/app/scripts/shell.sh"]
 COPY --from=build /build/build/ build/
 # Copy dependencies from build
 COPY --from=build /build/node_modules/ node_modules/
+# Copy public files
+COPY --from=build /build/public/ public/
 # Copy package files
 COPY --from=build /build/package.json /build/package-lock.json ./
 # Copy Next.js config
