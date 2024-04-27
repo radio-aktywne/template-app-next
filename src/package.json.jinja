@@ -6,8 +6,7 @@
     "run": "next start --hostname \"${ {{- envprefix }}__SERVER__HOST:-0.0.0.0}\" --port \"${ {{- envprefix }}__SERVER__PORT:-{{ port -}} }\"",
     "build": "next build",
     "clean": "rm --recursive --force build/",
-    "update": "ncu --peer --doctor --upgrade && npm i --no-audit --no-fund",
-    "test": "npm run -- build"
+    "update": "ncu --peer --upgrade && npm i --no-audit --no-fund"
   },
   "dependencies": {
     "@mantine/core": "^7.7.1",

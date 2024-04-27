@@ -12,6 +12,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "plugins": [
       {

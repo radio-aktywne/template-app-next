@@ -35,10 +35,13 @@ module.exports = {
   root: true,
 
   rules: {
-    // Allow empty destructuring patterns
-    "no-empty-pattern": "off",
-
     // Allow anonymous default exports
     "import/no-anonymous-default-export": "off",
+
+    // Allow empty block statements
+    "no-empty": "off",
+
+    // Allow empty destructuring patterns
+    "no-empty-pattern": "off",
   },
 };

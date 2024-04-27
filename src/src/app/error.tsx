@@ -1,8 +1,9 @@
 "use client";
 
-import { Title } from "@mantine/core";
+import { Button, Stack, Title } from "@mantine/core";
+import { IconRefresh } from "@tabler/icons-react";
 import { Metadata } from "next";
-import { labels } from "../config/labels.ts";
+import { labels } from "../config/labels";
 
 export const metadata: Metadata = {
   title: labels.pages.error.title,
@@ -14,6 +15,18 @@ export type ErrorProps = Readonly<{
   reset: () => void;
 }>;
 
-export default function Error({}: ErrorProps) {
-  return <Title>{labels.pages.error.text}</Title>;
+export default function Error({ reset }: ErrorProps) {
+  return (
+    <Stack>
+      <Title>{labels.pages.error.text}</Title>
+      <Button
+        variant="subtle"
+        color="gray"
+        onClick={reset}
+        leftSection={<IconRefresh />}
+      >
+        {labels.pages.error.buttons.retry.label}
+      </Button>
+    </Stack>
+  );
 }
