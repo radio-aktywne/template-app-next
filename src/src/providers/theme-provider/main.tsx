@@ -1,6 +1,7 @@
 "use client";
 
 import { MantineProvider } from "@mantine/core";
+
 import { defaultColorScheme } from "../../constants";
 import { colorSchemeManager } from "./scheme";
 import { theme } from "./theme";
