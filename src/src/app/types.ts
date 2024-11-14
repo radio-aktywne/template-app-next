@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
 export type RootErrorInput = {
-  error: Error & { digest?: string };
+  error: { digest?: string } & Error;
   reset: () => void;
 };
 

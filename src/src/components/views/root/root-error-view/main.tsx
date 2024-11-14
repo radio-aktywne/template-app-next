@@ -4,6 +4,7 @@ import { msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Button, Stack, Title } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
+
 import { RootErrorViewInput } from "./types";
 
 export function RootErrorView({ onRetry }: RootErrorViewInput) {

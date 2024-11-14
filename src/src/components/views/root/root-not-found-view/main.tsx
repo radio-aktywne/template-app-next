@@ -3,6 +3,7 @@
 import { msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Title } from "@mantine/core";
+
 import { RootNotFoundViewInput } from "./types";
 
 export function RootNotFoundView({}: RootNotFoundViewInput) {
