@@ -14,8 +14,7 @@ Next.js app template ⚫
 ## 💡 About
 
 This repository contains a [`copier`](https://copier.readthedocs.io) template
-that can be used to create [`Next.js`](https://nextjs.org) apps for
-[`radio-aktywne`](https://github.com/radio-aktywne).
+that can be used to create [`Next.js`](https://nextjs.org) apps.
 
 ## 📜 Usage
 
