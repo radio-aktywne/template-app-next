@@ -4,7 +4,7 @@
       "name": "{{ appname }}",
       "outputCapture": "std",
       "request": "launch",
-      "runtimeArgs": ["--node-option=--inspect=9228", "run", "dev"],
+      "runtimeArgs": ["run", "dev", "--", "--inspect"],
       "runtimeExecutable": "npm",
       "serverReadyAction": {
         "action": "debugWithChrome",

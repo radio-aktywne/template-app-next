@@ -86,8 +86,23 @@ export default {
             },
             reportDir: `${context.config.distDir}/.rsdoctor`,
           },
+
+          // Explicitly disable banner support
+          supports: {
+            banner: false,
+          },
         }),
       );
+
+    // Add CSS layers ordering (https://github.com/vercel/next.js/issues/64921, https://github.com/vercel/next.js/discussions/68684)
+    config.plugins.push(
+      new context.webpack.BannerPlugin({
+        banner: "@layer mantine, radio-aktywne;\n\n",
+        entryOnly: true,
+        include: /\.css$/,
+        raw: true,
+      }),
+    );
 
     return config;
   },

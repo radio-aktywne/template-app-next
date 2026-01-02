@@ -1,11 +1,12 @@
-import { DEFAULT_THEME } from "@mantine/core";
+import { constants as uiConstants } from "@radio-aktywne/ui";
 
 export const constants = {
   colors: {
-    all: DEFAULT_THEME.colors,
+    all: uiConstants.theme.colors,
     primary: {
-      name: DEFAULT_THEME.primaryColor as keyof typeof DEFAULT_THEME.colors,
-      shade: DEFAULT_THEME.primaryShade,
+      name: uiConstants.theme.primaryColor,
+      shade: uiConstants.theme.primaryShade,
     },
+    scheme: "dark",
   },
 } as const;
