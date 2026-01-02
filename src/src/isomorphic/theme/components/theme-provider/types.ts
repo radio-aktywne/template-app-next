@@ -1,5 +1,6 @@
 import type {
   MantineColor,
+  MantineColorScheme,
   MantineColorShade,
   MantinePrimaryShade,
   MantineThemeColors,
@@ -7,7 +8,8 @@ import type {
 import type { PropsWithChildren } from "react";
 
 export type ThemeProviderInput = PropsWithChildren<{
-  colors: MantineThemeColors;
+  colors: Partial<MantineThemeColors>;
+  colorScheme: MantineColorScheme;
   primaryColor: MantineColor;
   primaryShade: MantineColorShade | MantinePrimaryShade;
 }>;

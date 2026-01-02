@@ -16,9 +16,8 @@
 }
 
 .button-root {
-  background: transparent;
   border: 0.0625rem solid transparent;
-  border-radius: 1rem;
+  border-radius: 0;
   cursor: pointer;
   display: inline-block;
   font-size: 0.875rem;
@@ -32,10 +31,6 @@
   user-select: none;
   vertical-align: middle;
   width: auto;
-
-  &:hover {
-    background: revert;
-  }
 }
 
 .stack {

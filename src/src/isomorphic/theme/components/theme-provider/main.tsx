@@ -7,6 +7,8 @@ import "@mantine/core/styles.layer.css";
 import { DatesProvider } from "@mantine/dates";
 import "@mantine/dates/styles.css";
 import "@mantine/notifications/styles.layer.css";
+import { theme } from "@radio-aktywne/ui";
+import "@radio-aktywne/ui/styles.css";
 import { useMemo } from "react";
 import { useDeepCompareMemo } from "use-deep-compare";
 
@@ -16,35 +18,38 @@ import { dayjs } from "../../../../common/dates/vars/dayjs";
 import { useLocalization } from "../../../localization/hooks/use-localization";
 import { DocumentColorScheme } from "./components/document-color-scheme";
 import { DocumentThemeColor } from "./components/document-theme-color";
-import { constants } from "./constants";
-import { DummyColorSchemeManager } from "./utils";
+import { ForceColorSchemeManager } from "./utils";
 
 export function ThemeProvider({
   children,
   colors,
+  colorScheme,
   primaryColor,
   primaryShade,
 }: ThemeProviderInput) {
-  const theme = useDeepCompareMemo(
+  const resolvedTheme = useDeepCompareMemo(
     () =>
       createTheme({
+        ...theme,
         colors: colors,
-        defaultRadius: constants.radius,
         primaryColor: primaryColor,
         primaryShade: primaryShade,
       }),
     [colors, primaryColor, primaryShade],
   );
 
-  const colorSchemeManager = useMemo(() => new DummyColorSchemeManager(), []);
+  const colorSchemeManager = useMemo(
+    () => new ForceColorSchemeManager(colorScheme),
+    [colorScheme],
+  );
 
   const { localization } = useLocalization();
 
   return (
     <MantineProvider
       colorSchemeManager={colorSchemeManager}
-      defaultColorScheme="auto"
-      theme={theme}
+      defaultColorScheme={colorScheme}
+      theme={resolvedTheme}
     >
       <DocumentColorScheme />
       <DocumentThemeColor />

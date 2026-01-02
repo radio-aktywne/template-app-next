@@ -2,10 +2,10 @@ import { TbCheck, TbExclamationMark, TbInfoSmall, TbX } from "react-icons/tb";
 
 export const constants = {
   colors: {
-    error: "red",
-    info: "blue",
-    success: "green",
-    warning: "yellow",
+    error: "ra-red",
+    info: "ra-blue",
+    success: "ra-green",
+    warning: "ra-yellow",
   },
   icons: {
     error: <TbX size="1em" />,

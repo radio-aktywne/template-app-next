@@ -1,12 +1,17 @@
-import type { MantineColorSchemeManager } from "@mantine/core";
+import type {
+  MantineColorScheme,
+  MantineColorSchemeManager,
+} from "@mantine/core";
 
-export class DummyColorSchemeManager implements MantineColorSchemeManager {
+export class ForceColorSchemeManager implements MantineColorSchemeManager {
+  constructor(protected readonly colorScheme: MantineColorScheme) {}
+
   clear() {
     return;
   }
 
   get() {
-    return "auto" as const;
+    return this.colorScheme;
   }
 
   set() {

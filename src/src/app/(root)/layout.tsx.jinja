@@ -39,13 +39,17 @@ async function getTitle({}: LayoutMetadataUtilityInput<
   return msg({ message: "{{ appname }}" });
 }
 
+async function getColorScheme({}: LayoutViewportUtilityInput<
+  typeof Schemas.Path
+> = {}) {
+  return constants.colors.scheme;
+}
+
 async function getThemeColor({}: LayoutViewportUtilityInput<
   typeof Schemas.Path
 > = {}) {
-  if (typeof constants.colors.primary.shade !== "number") return undefined;
-
   const shade = constants.colors.primary.shade;
-  return constants.colors.all[constants.colors.primary.name]?.[shade];
+  return constants.colors.all[constants.colors.primary.name][shade];
 }
 
 async function getViewportAttributes({}: LayoutViewportUtilityInput<
@@ -67,6 +71,7 @@ export async function generateMetadata({}: LayoutMetadataInput<Keys.Path>) {
 
 export async function generateViewport({}: LayoutViewportInput<Keys.Path>) {
   return await createViewport({
+    colorScheme: await getColorScheme(),
     themeColor: await getThemeColor(),
     viewportAttributes: await getViewportAttributes(),
   });
@@ -82,7 +87,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning={true}>
       <head>
-        <ThemeScript />
+        <ThemeScript colorScheme={constants.colors.scheme} />
       </head>
       <body>
         <StateProvider>
@@ -92,6 +97,7 @@ export default async function RootLayout({
                 <LocalizationProvider locale={locale}>
                   <ThemeProvider
                     colors={constants.colors.all}
+                    colorScheme={constants.colors.scheme}
                     primaryColor={constants.colors.primary.name}
                     primaryShade={constants.colors.primary.shade}
                   >
