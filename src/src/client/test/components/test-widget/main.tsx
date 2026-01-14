@@ -8,13 +8,13 @@ import { useCallback, useState } from "react";
 import type { TestFormSubmitInput } from "./components/test-form";
 import type { TestWidgetInput } from "./types";
 
-import { dayjs } from "../../../../../common/dates/vars/dayjs";
-import { getValidationIssue } from "../../../../../common/orpc/lib/get-validation-issue";
-import { isOrpcDefinedError } from "../../../../../common/orpc/lib/is-orpc-defined-error";
-import { useLocalization } from "../../../../../isomorphic/localization/hooks/use-localization";
-import { useNotifications } from "../../../../../isomorphic/notifications/hooks/use-notifications";
-import { useNow } from "../../../../generic/hooks/use-now";
-import { orpcClientSideQueryClient } from "../../../../orpc/vars/clients";
+import { dayjs } from "../../../../common/dates/vars/dayjs";
+import { getValidationIssue } from "../../../../common/orpc/lib/get-validation-issue";
+import { isOrpcDefinedError } from "../../../../common/orpc/lib/is-orpc-defined-error";
+import { useLocalization } from "../../../../isomorphic/localization/hooks/use-localization";
+import { useNotifications } from "../../../../isomorphic/notifications/hooks/use-notifications";
+import { useNow } from "../../../generic/hooks/use-now";
+import { orpcClientSideQueryClient } from "../../../orpc/vars/clients";
 import { TestForm } from "./components/test-form";
 
 export function TestWidget({}: TestWidgetInput) {

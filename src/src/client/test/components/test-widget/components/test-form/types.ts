@@ -4,7 +4,7 @@ import type {
   UseFormOnSubmit,
   UseFormSubmitInput,
   UseFormValues,
-} from "../../../../../../../isomorphic/core/hooks/use-form";
+} from "../../../../../../isomorphic/core/hooks/use-form";
 import type { Schemas } from "./schemas";
 
 export type TestFormSchema = typeof Schemas.Values;

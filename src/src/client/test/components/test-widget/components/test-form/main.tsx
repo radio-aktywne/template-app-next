@@ -3,8 +3,8 @@ import { Button, TextInput } from "@mantine/core";
 
 import type { TestFormInput } from "./types";
 
-import { useForm } from "../../../../../../../isomorphic/core/hooks/use-form";
-import { useLocalization } from "../../../../../../../isomorphic/localization/hooks/use-localization";
+import { useForm } from "../../../../../../isomorphic/core/hooks/use-form";
+import { useLocalization } from "../../../../../../isomorphic/localization/hooks/use-localization";
 import { Schemas } from "./schemas";
 
 export function TestForm({ initialValues, onError, onSubmit }: TestFormInput) {
