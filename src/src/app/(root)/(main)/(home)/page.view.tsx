@@ -1,7 +1,7 @@
 import type { PageViewInput } from "../../../types";
 import type { Schemas } from "./schemas";
 
-import { TestWidget } from "../../../../client/test/components/test/test-widget";
+import { TestWidget } from "../../../../client/test/components/test-widget";
 import { LoadingWidget } from "../../../../common/core/components/generic/loading-widget";
 import { Hydrated } from "../../../../isomorphic/generic/components/hydrated";
 
