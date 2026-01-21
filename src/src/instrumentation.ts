@@ -15,7 +15,7 @@ export async function register() {
           path: config.apis.icanhazdadjoke.path,
           port: config.apis.icanhazdadjoke.port,
           scheme: config.apis.icanhazdadjoke.scheme,
-        }),
+        }).url,
       }),
     }),
   };
