@@ -10,7 +10,7 @@ import { getRequestUrl } from "../get-request-url";
 
 export async function getOriginalRequestUrl({
   request,
-}: GetOriginalRequestUrlInput): Promise<GetOriginalRequestUrlOutput> {
+}: GetOriginalRequestUrlInput = {}): Promise<GetOriginalRequestUrlOutput> {
   const { requestUrl } = await getRequestUrl({ request: request });
 
   const h = await headers();

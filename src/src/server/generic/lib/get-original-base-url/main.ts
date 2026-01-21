@@ -10,7 +10,7 @@ import { getRequestUrl } from "../get-request-url";
 
 export async function getOriginalBaseUrl({
   request,
-}: GetOriginalBaseUrlInput): Promise<GetOriginalBaseUrlOutput> {
+}: GetOriginalBaseUrlInput = {}): Promise<GetOriginalBaseUrlOutput> {
   const { requestUrl } = await getRequestUrl({ request: request });
   const { originalRequestUrl } = await getOriginalRequestUrl({
     request: request,

@@ -6,7 +6,7 @@ import { serverGenericConstants } from "../../constants";
 
 export async function getRequestUrl({
   request,
-}: GetRequestUrlInput): Promise<GetRequestUrlOutput> {
+}: GetRequestUrlInput = {}): Promise<GetRequestUrlOutput> {
   if (request === undefined)
     return {
       requestUrl: (await headers()).get(
