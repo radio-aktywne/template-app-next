@@ -77,6 +77,14 @@ export default defineConfig(
             // Use PascalCase for schema names
             case: "PascalCase",
 
+            dates: {
+              // Allow datetimes without timezone
+              local: true,
+
+              // Allow datetimes with offset timezone
+              offset: true,
+            },
+
             definitions: {
               name: "{{name}}Schema",
             },
