@@ -102,16 +102,17 @@ export default defineConfig(
 
           // Generate SDK
           {
-            // Generate SDK class
-            asClass: true,
-
             // Don't use generated client by default
             client: false,
 
-            // Make SDK class instantiable
-            instance: true,
-
             name: "@hey-api/sdk",
+
+            // Generate instantiable SDK class
+            operations: {
+              container: "class",
+              methods: "instance",
+              strategy: "single",
+            },
 
             // Use generated schemas for validation
             validator: true,
