@@ -35,7 +35,7 @@ export function useForm<SchemaType extends ZodObject>({
 
   const handleSubmit = useCallback(
     async (values: UseFormValues<SchemaType>) => {
-      if (!onSubmit) return;
+      if (submitting || !onSubmit) return;
 
       setSubmitting(true);
 
@@ -58,6 +58,7 @@ export function useForm<SchemaType extends ZodObject>({
       form.setInitialValues,
       localization.localize,
       onSubmit,
+      submitting,
     ],
   );
 
