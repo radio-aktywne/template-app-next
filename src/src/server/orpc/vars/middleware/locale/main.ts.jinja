@@ -3,10 +3,20 @@ import type { LocaleMiddlewareOutputContext } from "./types";
 import { getAcceptedLocales } from "../../../../../common/localization/lib/get-accepted-locales";
 import { getSupportedLocale } from "../../../../../common/localization/lib/get-supported-locale";
 import { headersMiddleware } from "../headers";
+{%- if identity %}
+import { userMiddleware } from "../user";
+{%- endif %}
 import { isExecuted } from "./utils";
+{%- if identity %}
+
+export const localeMiddleware = headersMiddleware
+  .concat(userMiddleware)
+  .concat(async ({ context, next }) => {
+{%- else %}
 
 export const localeMiddleware = headersMiddleware.concat(
   async ({ context, next }) => {
+{%- endif %}
     if (isExecuted(context))
       return next({
         context: {
@@ -18,8 +28,16 @@ export const localeMiddleware = headersMiddleware.concat(
       });
 
     const headers = context.headersMiddleware.headers;
+    {%- if identity %}
+
+    const preferred = context.userMiddleware.user?.traits.locales?.preferred;
+    const { locales: accepted } = getAcceptedLocales({ headers: headers });
+
+    const locales = preferred ? [preferred, ...accepted] : accepted;
+    {%- else %}
 
     const { locales } = getAcceptedLocales({ headers: headers });
+    {%- endif %}
     const { locale } = getSupportedLocale({ locales: locales });
 
     return next({
@@ -30,5 +48,9 @@ export const localeMiddleware = headersMiddleware.concat(
         },
       } satisfies LocaleMiddlewareOutputContext as LocaleMiddlewareOutputContext,
     });
+{%- if identity %}
+  });
+{%- else %}
   },
 );
+{%- endif %}

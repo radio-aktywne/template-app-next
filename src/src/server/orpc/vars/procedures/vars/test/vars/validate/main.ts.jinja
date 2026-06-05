@@ -3,9 +3,15 @@ import { msg } from "@lingui/core/macro";
 import { getLocalization } from "../../../../../../../localization/lib/get-localization";
 import { state } from "../../../../../../../state/vars/state";
 import { orpcServerRootBase } from "../../../../../bases/root";
+{%- if identity and access %}
+import { authenticatedMiddleware } from "../../../../../middleware/authenticated";
+{%- endif %}
 import { localeMiddleware } from "../../../../../middleware/locale";
 
 export const validate = orpcServerRootBase.test.validate
+  {%- if identity and access %}
+  .use(authenticatedMiddleware)
+  {%- endif %}
   .use(localeMiddleware)
   .handler(async ({ context, errors, input }) => {
     const { localization } = getLocalization({

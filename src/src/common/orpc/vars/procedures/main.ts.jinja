@@ -1,7 +1,13 @@
+{% if identity -%}
+import { identity } from "./vars/identity";
+{% endif -%}
 import { localization } from "./vars/localization";
 import { test } from "./vars/test";
 
 export const orpcContractProcedures = {
+  {%- if identity %}
+  identity: identity,
+  {%- endif %}
   localization: localization,
   test: test,
 };
