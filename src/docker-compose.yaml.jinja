@@ -9,6 +9,12 @@ services:
       - "{{ envprefix }}__APIS__ICANHAZDADJOKE__PORT=${ {{- envprefix }}__APIS__ICANHAZDADJOKE__PORT:-}"
       - "{{ envprefix }}__APIS__ICANHAZDADJOKE__SCHEME=${ {{- envprefix }}__APIS__ICANHAZDADJOKE__SCHEME:-https}"
       - "{{ envprefix }}__DEBUG=${ {{- envprefix }}__DEBUG:-true}"
+      {%- if identity %}
+      - "{{ envprefix }}__IDENTITY__USERS__DEBUG__ID=${ {{- envprefix }}__IDENTITY__USERS__DEBUG__ID:-debug}"
+      - "{{ envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__LOCALES__PREFERRED=${ {{- envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__LOCALES__PREFERRED:-}" # yamllint disable-line rule:line-length
+      - "{{ envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__NAMES__DISPLAY=${ {{- envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__NAMES__DISPLAY:-Debug User}" # yamllint disable-line rule:line-length
+      - "{{ envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__PICTURES__PROFILE__URL=${ {{- envprefix }}__IDENTITY__USERS__DEBUG__TRAITS__PICTURES__PROFILE__URL:-}" # yamllint disable-line rule:line-length
+      {%- endif %}
       - "{{ envprefix }}__SERVER__HOST=${ {{- envprefix }}__SERVER__HOST:-0.0.0.0}"
       - "{{ envprefix }}__SERVER__PORT=${ {{- envprefix }}__SERVER__PORT:-{{ port -}} }"
     network_mode: host

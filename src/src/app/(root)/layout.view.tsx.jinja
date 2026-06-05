@@ -3,9 +3,22 @@ import { PageLayout } from "@radio-aktywne/ui";
 import type { LayoutViewInput } from "../types";
 import type { Schemas } from "./schemas";
 import type { Keys } from "./types";
+{%- if identity %}
+
+import { IdentityWidget } from "../../isomorphic/identity/components/identity-widget";
+{%- endif %}
 
 export async function RootLayoutView({
   children,
 }: LayoutViewInput<typeof Schemas.Path, Keys.Slots>) {
+  {%- if identity %}
+  return (
+    <PageLayout>
+      <IdentityWidget />
+      {children}
+    </PageLayout>
+  );
+  {%- else %}
   return <PageLayout>{children}</PageLayout>;
+  {%- endif %}
 }

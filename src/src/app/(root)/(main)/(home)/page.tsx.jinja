@@ -9,6 +9,9 @@ import type {
 import type { Keys } from "./types";
 
 import { Metadata } from "../../../../isomorphic/metadata/components/metadata";
+{%- if identity and access %}
+import { Authenticated } from "../../../../server/access/components/authenticated";
+{%- endif %}
 import { createMetadata } from "../../../../server/metadata/lib/create-metadata";
 import { HomePageView } from "./page.view";
 import { Schemas } from "./schemas";
@@ -38,9 +41,9 @@ export default async function HomePage({
   const queryParameters = await Schemas.Query.parseAsync(await searchParams);
 
   return (
-    <>
+    <{% if identity and access %}Authenticated{% endif %}>
       <Metadata title={await getTitle({ queryParameters: queryParameters })} />
       <HomePageView queryParameters={queryParameters} />
-    </>
+    </{% if identity and access %}Authenticated{% endif %}>
   );
 }

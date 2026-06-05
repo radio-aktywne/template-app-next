@@ -29,14 +29,20 @@ msgstr "Błąd"
 msgid "Error • {{ appname }}"
 msgstr "Błąd • {{ appname }}"
 
-#: src/app/(root)/layout.tsx:34
+#: src/app/(root)/layout.tsx:{% if identity %}36{% else %}34{% endif %}
 msgid "{{ description }}"
 msgstr "{{ description }}"
 
-#: src/app/(root)/(main)/(home)/page.tsx:20
-#: src/app/(root)/layout.tsx:40
+#: src/app/(root)/(main)/(home)/page.tsx:{% if identity and access %}21{% else %}20{% endif %}
+#: src/app/(root)/layout.tsx:{% if identity %}42{% else %}40{% endif %}
 msgid "{{ appname }}"
 msgstr "{{ appname }}"
+{%- if identity and access %}
+
+#: src/app/(root)/forbidden.tsx:11
+msgid "Forbidden • {{ appname }}"
+msgstr "Brak dostępu • {{ appname }}"
+{%- endif %}
 
 #: src/isomorphic/notifications/hooks/use-notifications/main.ts:51
 msgid "Info"
@@ -46,6 +52,12 @@ msgstr "Informacja"
 #: src/client/test/components/test-widget/main.tsx:62
 msgid "Invalid input"
 msgstr "Nieprawidłowe dane wejściowe"
+{%- if identity %}
+
+#: src/isomorphic/identity/components/identity-widget/main.tsx:21
+msgid "Logout"
+msgstr "Wyloguj się"
+{%- endif %}
 
 #: src/app/(root)/not-found.tsx:15
 msgid "Not Found • {{ appname }}"
@@ -75,6 +87,18 @@ msgstr "Sukces"
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: src/server/orpc/vars/procedures/vars/test/vars/validate/main.ts:27
+#: src/server/orpc/vars/procedures/vars/test/vars/validate/main.ts:{% if identity and access %}29{% else %}27{% endif %}
 msgid "Why did the chicken cross the road? To get to the other side."
 msgstr "Dlaczego kura przeszła przez ulicę? Żeby dostać się na drugą stronę."
+{%- if identity and access %}
+
+#: src/isomorphic/access/components/forbidden-widget/main.tsx:16
+msgid "You are not allowed to access this page"
+msgstr "Nie masz dostępu do tej strony"
+{%- endif %}
+{%- if identity %}
+
+#: src/isomorphic/identity/components/identity-provider/components/user-synchronizer/main.tsx:56
+msgid "You are not authenticated. Reload the page to authenticate again."
+msgstr "Nie jesteś uwierzytelniony. Odśwież stronę, aby ponownie się uwierzytelnić."
+{%- endif %}

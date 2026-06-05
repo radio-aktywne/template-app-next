@@ -38,6 +38,17 @@ keyprefix:
   help: The prefix for various keys used in the app
   default: "{{ appname | lower | replace('_', '-') }}"
 
+identity:
+  type: bool
+  help: Whether to include identity features in the app
+  default: true
+
+access:
+  type: bool
+  help: Whether to include access features in the app
+  default: true
+  when: "{{ identity }}"
+
 docs:
   type: bool
   help: Whether to include a documentation site for the app
