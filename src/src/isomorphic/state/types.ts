@@ -1,5 +1,7 @@
 import "client-only";
 
+import type { ReadonlyDeep } from "type-fest";
+
 export type NowState = {
   counter: number;
   timer: number;
@@ -9,6 +11,8 @@ export type NowState = {
 export type State = {
   now?: NowState;
 };
+
+export type ReadonlyState = ReadonlyDeep<State>;
 
 export type StateSubscribeCallback = (state: State) => void;
 
