@@ -14,6 +14,7 @@ import type { Schemas } from "./schemas";
 import type { Keys } from "./types";
 
 import { ThemeScript } from "../../common/theme/components/theme-script";
+import { HistoryProvider } from "../../isomorphic/generic/components/history-provider";
 {%- if identity %}
 import { IdentityProvider } from "../../isomorphic/identity/components/identity-provider";
 {%- endif %}
@@ -102,36 +103,38 @@ export default async function RootLayout({
       </head>
       <body>
         <StateProvider>
-          <MetadataProvider>
-            <QueryProvider>
-              <HydrationBoundary state={dehydrate(queryClient)}>
-                <LocalizationProvider locale={locale}>
-                  <ThemeProvider
-                    colors={constants.colors.all}
-                    colorScheme={constants.colors.scheme}
-                    primaryColor={constants.colors.primary.name}
-                    primaryShade={constants.colors.primary.shade}
-                  >
-                    {%- if identity %}
-                    <IdentityProvider user={identity.user}>
+          <HistoryProvider>
+            <MetadataProvider>
+              <QueryProvider>
+                <HydrationBoundary state={dehydrate(queryClient)}>
+                  <LocalizationProvider locale={locale}>
+                    <ThemeProvider
+                      colors={constants.colors.all}
+                      colorScheme={constants.colors.scheme}
+                      primaryColor={constants.colors.primary.name}
+                      primaryShade={constants.colors.primary.shade}
+                    >
+                      {%- if identity %}
+                      <IdentityProvider user={identity.user}>
+                        <Metadata
+                          description={await getDescription()}
+                          title={await getTitle()}
+                        />
+                        <RootLayoutView>{children}</RootLayoutView>
+                      </IdentityProvider>
+                      {%- else %}
                       <Metadata
                         description={await getDescription()}
                         title={await getTitle()}
                       />
                       <RootLayoutView>{children}</RootLayoutView>
-                    </IdentityProvider>
-                    {%- else %}
-                    <Metadata
-                      description={await getDescription()}
-                      title={await getTitle()}
-                    />
-                    <RootLayoutView>{children}</RootLayoutView>
-                    {%- endif %}
-                  </ThemeProvider>
-                </LocalizationProvider>
-              </HydrationBoundary>
-            </QueryProvider>
-          </MetadataProvider>
+                      {%- endif %}
+                    </ThemeProvider>
+                  </LocalizationProvider>
+                </HydrationBoundary>
+              </QueryProvider>
+            </MetadataProvider>
+          </HistoryProvider>
         </StateProvider>
       </body>
     </html>
