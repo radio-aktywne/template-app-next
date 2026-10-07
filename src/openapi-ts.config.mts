@@ -96,6 +96,9 @@ export default defineConfig(
 
             requests: {
               name: "{{name}}RequestSchema",
+
+              // Generate request schemas
+              shouldExtract: true,
             },
 
             responses: {
