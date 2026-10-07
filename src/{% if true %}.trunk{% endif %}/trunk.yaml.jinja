@@ -10,7 +10,7 @@ runtimes:
   enabled:
     # Needed for gitleaks, shfmt
     - go@1.27.0
-    # Needed for eslint, markdownlint, prettier, stylelint, svgo
+    # Needed for {% if docs %}eslint, {% endif %}markdownlint, prettier{% if docs %}, stylelint, svgo{% endif %}
     - node@26.8.2
     # Needed for yamllint
     - python@3.14.4
@@ -55,6 +55,7 @@ lint:
             check
             path:${target}
           success_codes: [0, 1]
+    {%- if docs %}
     # Override default eslint definition
     - name: eslint
       commands:
@@ -67,11 +68,14 @@ lint:
           run_from: ${root_or_parent_with_direct_config}
         - name: fix
           run_from: ${root_or_parent_with_direct_config}
+    {%- endif %}
   enabled:
     # GitHub Actions linting
     - actionlint@1.7.12
+    {%- if docs %}
     # JavaScript and TypeScript linting
     - eslint@9.39.5
+    {%- endif %}
     # Check for whitespace errors
     - git-diff-check
     # Check for secrets in the code
@@ -84,20 +88,24 @@ lint:
     - nix-fmt-check@SYSTEM
     # Nix flake check
     - nix-flake-check@SYSTEM
-    # JS, TS, CSS, HTML, JSON, YAML, Markdown formatting
+    # {% if docs %}JS, TS, CSS, HTML, {% endif %}JSON, YAML, Markdown formatting
     - prettier@3.9.6:
         packages:
           # JSON sorting
           - prettier-plugin-sort-json@4.2.0
+          {%- if docs %}
           # package.json sorting
           - prettier-plugin-packagejson@3.0.2
+          {%- endif %}
     # Shell linting
     - shellcheck@0.11.0
     # Shell formatting
     - shfmt@3.14.1
+    {%- if docs %}
     # CSS linting
     - stylelint@17.15.0
     # SVG formatting
     - svgo@4.1.0
+    {%- endif %}
     # YAML linting
     - yamllint@1.38.0
