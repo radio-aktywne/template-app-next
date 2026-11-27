@@ -11,5 +11,5 @@ export default async function AuthLogoutPage({}: PageInput<
 >) {
   await connection();
 
-  await localizedRedirect({ href: "/" });
+  return await localizedRedirect({ href: "/" });
 }
