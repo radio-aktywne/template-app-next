@@ -8,5 +8,5 @@ import { localizedRedirect } from "../../../server/routing/lib/localized-redirec
 export default async function HomePage({}: PageInput<Keys.Path, Keys.Query>) {
   await connection();
 
-  await localizedRedirect({ href: "/example" });
+  return await localizedRedirect({ href: "/example" });
 }
