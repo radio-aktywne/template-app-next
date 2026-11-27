@@ -1,13 +1,13 @@
-{% if identity -%}
+import { example } from "./vars/example";
+{%- if identity %}
 import { identity } from "./vars/identity";
-{% endif -%}
+{%- endif %}
 import { localization } from "./vars/localization";
-import { test } from "./vars/test";
 
 export const orpcContractProcedures = {
+  example: example,
   {%- if identity %}
   identity: identity,
   {%- endif %}
   localization: localization,
-  test: test,
 };
