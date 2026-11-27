@@ -13,11 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/client/test/components/test-widget/main.tsx:50
+#: src/common/routing/constants.ts:5
+msgid "/"
+msgstr "/"
+
+#: src/common/routing/constants.ts:6
+msgid "/example"
+msgstr "/example"
+
+#: src/client/example/components/example-widget/main.tsx:50
 msgid "An unexpected error occurred"
 msgstr "An unexpected error occurred"
 
-#: src/client/test/components/test-widget/components/test-form/main.tsx:30
+#: src/client/example/components/example-widget/components/example-form/main.tsx:34
 msgid "Enter some value"
 msgstr "Enter some value"
 
@@ -29,12 +37,12 @@ msgstr "Error"
 msgid "Error • {{ appname }}"
 msgstr "Error • {{ appname }}"
 
-#: src/app/(root)/layout.tsx:{% if identity %}37{% else %}35{% endif %}
+#: src/app/(root)/layout.tsx:{% if identity %}39{% else %}37{% endif %}
 msgid "{{ description }}"
 msgstr "{{ description }}"
 
-#: src/app/(root)/(main)/(home)/page.tsx:{% if identity and access %}21{% else %}20{% endif %}
-#: src/app/(root)/layout.tsx:{% if identity %}43{% else %}41{% endif %}
+#: src/app/(root)/(main)/example/page.tsx:{% if identity and access %}21{% else %}20{% endif %}
+#: src/app/(root)/layout.tsx:{% if identity %}45{% else %}43{% endif %}
 msgid "{{ appname }}"
 msgstr "{{ appname }}"
 {%- if identity and access %}
@@ -48,13 +56,13 @@ msgstr "Forbidden • {{ appname }}"
 msgid "Info"
 msgstr "Info"
 
-#: src/client/test/components/test-widget/main.tsx:39
-#: src/client/test/components/test-widget/main.tsx:60
+#: src/client/example/components/example-widget/main.tsx:39
+#: src/client/example/components/example-widget/main.tsx:60
 msgid "Invalid input"
 msgstr "Invalid input"
 {%- if identity %}
 
-#: src/isomorphic/identity/components/identity-widget/main.tsx:21
+#: src/isomorphic/identity/components/identity-widget/main.tsx:24
 msgid "Logout"
 msgstr "Logout"
 {%- endif %}
@@ -75,7 +83,7 @@ msgstr "Retry"
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
-#: src/client/test/components/test-widget/components/test-form/main.tsx:36
+#: src/client/example/components/example-widget/components/example-form/main.tsx:40
 msgid "Submit"
 msgstr "Submit"
 
@@ -87,7 +95,7 @@ msgstr "Success"
 msgid "Warning"
 msgstr "Warning"
 
-#: src/server/orpc/vars/procedures/vars/test/vars/validate/main.ts:{% if identity and access %}29{% else %}27{% endif %}
+#: src/server/orpc/vars/procedures/vars/example/vars/validate/main.ts:{% if identity and access %}29{% else %}27{% endif %}
 msgid "Why did the chicken cross the road? To get to the other side."
 msgstr "Why did the chicken cross the road? To get to the other side."
 {%- if identity and access %}
@@ -98,7 +106,7 @@ msgstr "You are not allowed to access this page"
 {%- endif %}
 {%- if identity %}
 
-#: src/isomorphic/identity/components/identity-provider/components/user-synchronizer/main.tsx:56
+#: src/isomorphic/identity/components/identity-provider/components/user-synchronizer/main.tsx:36
 msgid "You are not authenticated. Reload the page to authenticate again."
 msgstr "You are not authenticated. Reload the page to authenticate again."
 {%- endif %}
